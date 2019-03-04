@@ -2,10 +2,14 @@ export const ADD_TODO = 'ADD_TODO';
 export const MARK_COMPLETED = 'MARK_COMPLETED';
 export const REMOVE_TODO = 'REMOVE_TODO';
 
-export const addTodo = () => {
+export const addTodo = inputText => {
     return {
         type: ADD_TODO,
-        payload: ''
+        payload: {
+            task: inputText,
+            id: Date.now(),
+            completed: false
+        }
     }
 }
 
