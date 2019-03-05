@@ -3,14 +3,12 @@ export const HANDLE_CHANGE = 'HANDLE_CHANGE';
 export const MARK_COMPLETED = 'MARK_COMPLETED';
 export const REMOVE_TODO = 'REMOVE_TODO';
 
-export const addTodo = inputText => {
+export const addTodo = task => {
+    console.log("hit");
+    console.log(task);
     return {
         type: ADD_TODO,
-        payload: {
-            task: inputText,
-            id: Date.now(),
-            completed: false
-        }
+        payload: task
     }
 }
 
@@ -21,10 +19,10 @@ export const handleChange = e => {
     }
 }
 
-export const markCompleted = () => {
+export const markCompleted = id => {
     return {
         type: MARK_COMPLETED,
-        payload: ''
+        payload: id
     }
 }
 

@@ -19,7 +19,8 @@ export default (state = initialState, action ) => {
                 tasks: [
                     ...state.tasks,
                     action.payload
-                ]                
+                ],
+                inputText: ''
             }
         case HANDLE_CHANGE:
             return {
@@ -27,9 +28,16 @@ export default (state = initialState, action ) => {
                 inputText: action.payload
             }
         case MARK_COMPLETED:
-            return {
-                ...state,
-            }
+            return state.map(task => {
+                    if (task.id === action.payload) {
+                        return {
+                            ...state,
+                            completed: !task.completed
+                        }
+                    } else {
+                        return task;
+                    }
+                });
         case REMOVE_TODO:
             return {
                 ...state,

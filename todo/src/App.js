@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addTodo, markCompleted, removeTodo } from './actions';
+// import { addTodo, handleChange, markCompleted, removeTodo } from './actions';
 import TodoList from './components/TodoList';
+import TodoForm from './components/TodoForm';
 import './App.css';
 
 class App extends Component {
+
   render() {
     return (
       <div className="App">
-        <TodoList tasks={this.props.tasks} />
+        <TodoList setCompleted={this.setCompleted}/>
+        <TodoForm />
       </div>
     );
   }
@@ -21,4 +24,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { addTodo, markCompleted, removeTodo })(App);
+export default connect(mapStateToProps, {})(App);

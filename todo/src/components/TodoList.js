@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { markCompleted } from '../actions';
 
 import './TodoList.css';
 
@@ -9,11 +10,11 @@ const TodoList = props => {
         <ul>
             {props.tasks.map(task => (
                 <li key={task.id}
-                className={task.completed ? "completed" : null}
-                onClick={() => props.setCompleted(task.id)}
-                >
-                {task.task}
-            </li>
+                    style={task.completed ? { textDecoration: 'line-through' } : null}
+                    onClick={() => props.markCompleted(task.id)}
+                    >
+                    {task.task}
+                </li>
             ))}
         </ul>
     )
@@ -25,4 +26,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {})(TodoList);
+export default connect(mapStateToProps, { markCompleted })(TodoList);

@@ -1,21 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { handleChange } from '../actions';
+import { addTodo, handleChange } from '../actions';
 
-const TodoForm = props => {
-    return (
-        <form>
-            <input
-                type="text"
-                value={props.inputText}
-                name="todo"
-                onChange={props.handleChange}
-                placeholder="...todo"
-            />
-            <button onClick={props.addTask}>Add Todo</button>
-            <button onClick={props.clearCompleted}>Clear Completed</button>
-        </form>
-    )
+class TodoForm extends React.Component {
+
+    submitTodo = () => {
+        const task = this.props.inputText;
+        const newTask = {task, completed: false, id: Date.now() };
+        this.props.addTodo(newTask)
+    }
+
+    render() {
+        return (
+            <form>
+                <input
+                    type="text"
+                    value={this.props.inputText}
+                    name="todo"
+                    onChange={this.props.handleChange}
+                    placeholder="...todo"
+                />
+                <button type="button" onClick={this.submitTodo}>Add Todo</button>
+                <button onClick={this.props.clearCompleted}>Clear Completed</button>
+            </form>
+        )
+    }
 }
 
 const mapStateToProps = state => {
@@ -24,4 +33,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { handleChange: handleChange })(TodoForm);
+export default connect(mapStateToProps, { handleChange, addTodo })(TodoForm);
