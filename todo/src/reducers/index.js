@@ -2,11 +2,13 @@ import { ADD_TODO, MARK_COMPLETED, REMOVE_TODO } from '../actions';
 
 const initialState = {
     inputText: '',
-    tasks: {
+    tasks: [
+        {
         id: 0,
         task: "Add things",
         completed: false
-    }
+        }
+    ]
 }
 
 export default (state = initialState, action ) => {
