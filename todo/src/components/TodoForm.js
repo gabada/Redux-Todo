@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { handleChange } from '../actions';
 
 const TodoForm = props => {
     return (
@@ -7,7 +9,7 @@ const TodoForm = props => {
                 type="text"
                 value={props.inputText}
                 name="todo"
-                onChange={props.handleChanges}
+                onChange={props.handleChange}
                 placeholder="...todo"
             />
             <button onClick={props.addTask}>Add Todo</button>
@@ -16,4 +18,10 @@ const TodoForm = props => {
     )
 }
 
-export default TodoForm;
+const mapStateToProps = state => {
+    return {
+        inputText: state.inputText
+    }
+}
+
+export default connect(mapStateToProps, { handleChange: handleChange })(TodoForm);

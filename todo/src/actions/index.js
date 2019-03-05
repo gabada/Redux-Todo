@@ -1,4 +1,5 @@
 export const ADD_TODO = 'ADD_TODO';
+export const HANDLE_CHANGE = 'HANDLE_CHANGE';
 export const MARK_COMPLETED = 'MARK_COMPLETED';
 export const REMOVE_TODO = 'REMOVE_TODO';
 
@@ -10,6 +11,13 @@ export const addTodo = inputText => {
             id: Date.now(),
             completed: false
         }
+    }
+}
+
+export const handleChange = e => {
+    return {
+        type: HANDLE_CHANGE,
+        payload: e.target.value
     }
 }
 
