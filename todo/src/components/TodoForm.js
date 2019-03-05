@@ -4,15 +4,16 @@ import { addTodo, handleChange } from '../actions';
 
 class TodoForm extends React.Component {
 
-    submitTodo = () => {
+    submitTodo = e => {
+        e.preventDefault();
         const task = this.props.inputText;
-        const newTask = {task, completed: false, id: Date.now() };
+        const newTask = {id: Date.now(), task, completed: false };
         this.props.addTodo(newTask)
     }
 
     render() {
         return (
-            <form>
+            <form onSubmit={this.submitTodo}>
                 <input
                     type="text"
                     value={this.props.inputText}

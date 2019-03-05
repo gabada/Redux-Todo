@@ -4,8 +4,6 @@ export const MARK_COMPLETED = 'MARK_COMPLETED';
 export const REMOVE_TODO = 'REMOVE_TODO';
 
 export const addTodo = task => {
-    console.log("hit");
-    console.log(task);
     return {
         type: ADD_TODO,
         payload: task

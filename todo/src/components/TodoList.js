@@ -5,25 +5,23 @@ import { markCompleted } from '../actions';
 import './TodoList.css';
 
 const TodoList = props => {
-    console.log(props.tasks);
     return (
-        <ul>
+        <div>
             {props.tasks.map(task => (
-                <li key={task.id}
+                <div key={task.id}
                     style={task.completed ? { textDecoration: 'line-through' } : null}
                     onClick={() => props.markCompleted(task.id)}
                     >
                     {task.task}
-                </li>
+                </div>
             ))}
-        </ul>
+        </div>
     )
 }
 
-const mapStateToProps = state => {
-    return {
+const mapStateToProps = state => ({
+    // implicit return
         tasks: state.tasks
-    }
-}
+})
 
 export default connect(mapStateToProps, { markCompleted })(TodoList);
