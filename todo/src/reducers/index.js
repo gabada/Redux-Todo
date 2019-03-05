@@ -1,4 +1,4 @@
-import { ADD_TODO, HANDLE_CHANGE, MARK_COMPLETED, REMOVE_TASK } from '../actions';
+import { ADD_TODO, HANDLE_CHANGE, MARK_COMPLETED, REMOVE_TASK, CLEAR_COMPLETED } from '../actions';
 
 const initialState = {
     inputText: '',
@@ -21,12 +21,17 @@ export default (state = initialState, action ) => {
                     action.payload
                 ],
                 inputText: ''
-            }
+            };
+        case CLEAR_COMPLETED:
+            return {
+                ...state,
+                tasks: state.tasks.filter(task => !task.completed)
+            };
         case HANDLE_CHANGE:
             return {
                 ...state,
                 inputText: action.payload
-            }
+            };
         case MARK_COMPLETED:
             return {
                 ...state,
@@ -44,7 +49,7 @@ export default (state = initialState, action ) => {
             return {
                 ...state,
                 tasks: state.tasks.filter(task => task.id !== action.payload)
-            }
+            };
         default:
         return state;
     }

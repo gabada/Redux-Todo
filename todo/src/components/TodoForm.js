@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addTodo, handleChange } from '../actions';
+import { addTodo, handleChange, clearCompleted } from '../actions';
 
 class TodoForm extends React.Component {
 
@@ -13,17 +13,19 @@ class TodoForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.submitTodo}>
-                <input
-                    type="text"
-                    value={this.props.inputText}
-                    name="todo"
-                    onChange={this.props.handleChange}
-                    placeholder="...todo"
-                />
+            <div>
+                <form onSubmit={this.submitTodo}>
+                    <input
+                        type="text"
+                        value={this.props.inputText}
+                        name="todo"
+                        onChange={this.props.handleChange}
+                        placeholder="...todo"
+                    />
+                </form>
                 <button onClick={this.submitTodo}>Add Todo</button>
                 <button onClick={this.props.clearCompleted}>Clear Completed</button>
-            </form>
+            </div>
         )
     }
 }
@@ -34,4 +36,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { handleChange, addTodo })(TodoForm);
+export default connect(mapStateToProps, { handleChange, addTodo, clearCompleted })(TodoForm);

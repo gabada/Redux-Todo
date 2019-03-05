@@ -1,4 +1,5 @@
 export const ADD_TODO = 'ADD_TODO';
+export const CLEAR_COMPLETED = 'CLEAR_COMPLETED';
 export const HANDLE_CHANGE = 'HANDLE_CHANGE';
 export const MARK_COMPLETED = 'MARK_COMPLETED';
 export const REMOVE_TASK = 'REMOVE_TASK';
@@ -7,6 +8,12 @@ export const addTodo = task => {
     return {
         type: ADD_TODO,
         payload: task
+    }
+}
+
+export const clearCompleted = () => {
+    return {
+        type: CLEAR_COMPLETED
     }
 }
 
