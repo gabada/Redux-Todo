@@ -1,4 +1,4 @@
-import { ADD_TODO, HANDLE_CHANGE, MARK_COMPLETED, REMOVE_TODO } from '../actions';
+import { ADD_TODO, HANDLE_CHANGE, MARK_COMPLETED, REMOVE_TASK } from '../actions';
 
 const initialState = {
     inputText: '',
@@ -40,9 +40,10 @@ export default (state = initialState, action ) => {
                     return task;
                 })
             };
-        case REMOVE_TODO:
+        case REMOVE_TASK:
             return {
                 ...state,
+                tasks: state.tasks.filter(task => task.id !== action.payload)
             }
         default:
         return state;

@@ -1,7 +1,7 @@
 export const ADD_TODO = 'ADD_TODO';
 export const HANDLE_CHANGE = 'HANDLE_CHANGE';
 export const MARK_COMPLETED = 'MARK_COMPLETED';
-export const REMOVE_TODO = 'REMOVE_TODO';
+export const REMOVE_TASK = 'REMOVE_TASK';
 
 export const addTodo = task => {
     return {
@@ -24,9 +24,9 @@ export const markCompleted = id => {
     }
 }
 
-export const removeTodo = () => {
+export const removeTask = id => {
     return {
-        type: REMOVE_TODO,
-        payload: ''
+        type: REMOVE_TASK,
+        payload: id
     }
 }
